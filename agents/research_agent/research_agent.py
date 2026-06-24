@@ -51,7 +51,7 @@ response = client.models.generate_content(
 
 # Save output
 output_path = os.path.join(
-      "docs"
+      "docs",
       "research_answer.txt"
 )
 
