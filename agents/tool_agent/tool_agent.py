@@ -1,4 +1,5 @@
 #tool_agent.py
+import time
 import os
 from dotenv import load_dotenv
 from google import genai
@@ -15,6 +16,11 @@ def calculator(expression):
     try:
         return str(eval(expression))
     except Exception as e:
+        if "429" in str(e):
+            print("Rate limit hit. Sleeping for 15 seconds...")
+            time.sleep(15)
+            #continue
+                
         return f"Error: {e}"
         
      
@@ -45,15 +51,36 @@ model_reply = response.text.strip()
 
 #print("\nModel Reply:")
 #print(model_reply)
-
+time.sleep(15)
 if model_reply.startswith("CALCULATE:"):
     expression = model_reply.replace("CALCULATE:","").strip()
     
     result = calculator(expression)
     
-    print("\nTool Used: Calculator")
-    print("Expression:", expression)
-    print("Result:", result)
+    final_response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=f"""
+    User asked:
+    
+    {question}
+    
+    Calculator result:
+    
+    {result}
+    
+    Provide a helpful final answer.
+    """
+    )
+    
+    print("\nFinal Answer:")
+    print(final_response.text)
+    
+#    print("\nTool Used: Calculator")
+#    print("Expression:", expression)
+#    print("Result:", result)
+
+
+
 else:
     print("\nDirect Answer:")
     print(model_reply)
