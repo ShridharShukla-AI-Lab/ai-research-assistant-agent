@@ -1,4 +1,5 @@
 #summary_agent.py
+#development step4: before coordinator_agent and other agents can use this agent, we need to convert it from: standalone script ->to-> reusable function ->to-> callable agent. (this is the first real software-engineering refactor of the project.
 import time
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
