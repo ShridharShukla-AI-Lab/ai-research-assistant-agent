@@ -1,16 +1,14 @@
-#summary_agent.py
+#contribution_agent subset from summary_agent
 #development step4: before coordinator_agent and other agents can use this agent, we need to convert it from: standalone script ->to-> reusable function ->to-> callable agent. (this is the first real software-engineering refactor of the project.
 #next step: make summary agent callable - to implement multi agent collaboration. this demonstrates agent collaboration, which is valuable for interviews and GitHub.
 import time
 import os
-
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #the above path is printing inside agents section but not in docs folder of root directory
 #apply changes below
 BASE_DIR = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "..")
 )
-
 
 print("current working directory:", os.getcwd())
 
@@ -31,7 +29,7 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 #with open ("C:\Users\Shridhar_Shukla_AI\OneDrive\Documents\2026\5-Day AI Agents-google\Capstone project\AI-Research-Assistant-Agent\docs/extracted_text.txt", 
 #with open ("..\..\docs/extracted_text.txt", 
 
-def summarize_paper():
+def extract_contributions():
 
     with open ("docs/extracted_text.txt", 
                         "r",
@@ -47,17 +45,26 @@ def summarize_paper():
     3. Main Contributions
     """
 
-#def summarize_paper(paper_text):
+    ## in contribution agent change prompt and fubction from how it was in summary agent.
+    #def summarize_paper(paper_text):
+
+#def extract_contributions(paper_text):
 
     prompt = f"""
-    You are an expert AI research assistant.
+    You are an expert AI research analyst.
 
-    Analyze the following research paper and provide:
+    Analyze the following research paper.
+    
+    Identify ONLY the major contributions.
+    
+    For each contribution provide:
 
-    1. Executive Summary (5 bullet points)
-    2. Main Idea
-    3. Why this paper was important
-    4. Key Contributions
+    1. Contribution title
+    2. Explanation
+    3. Why it is novel
+    4. Practical impact
+    
+    Do NOT summarize the paper.
     
     Paper:
 
@@ -98,7 +105,7 @@ def summarize_paper():
                  
      # ------- API wrap end -------
      
-    #print(response.text)   now summary is printed in function call. name==main
+    #print(response.text)
 
     ##step 5: make summary agent callable function
     """  
@@ -139,13 +146,13 @@ def summarize_paper():
     output_path = os.path.join(
           BASE_DIR,
           "docs",
-          "summary_report.txt"
+          "contribution_report.txt"
      )
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(response.text)
           
-    print(f"Summary saved to: {output_path}")
+    print(f"Contributions Summary saved to: {output_path}")
     
     
     
@@ -153,5 +160,6 @@ def summarize_paper():
     
 if __name__ == "__main__":
 #    pdf_text = paper_text
-    print(summarize_paper())
+#    print(extract_contributions(paper_text))
+    print(extract_contributions())
     

@@ -1,9 +1,8 @@
-#summary_agent.py
+#limitation_agent subset from summary_agent
 #development step4: before coordinator_agent and other agents can use this agent, we need to convert it from: standalone script ->to-> reusable function ->to-> callable agent. (this is the first real software-engineering refactor of the project.
 #next step: make summary agent callable - to implement multi agent collaboration. this demonstrates agent collaboration, which is valuable for interviews and GitHub.
 import time
 import os
-
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #the above path is printing inside agents section but not in docs folder of root directory
 #apply changes below
@@ -31,7 +30,7 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 #with open ("C:\Users\Shridhar_Shukla_AI\OneDrive\Documents\2026\5-Day AI Agents-google\Capstone project\AI-Research-Assistant-Agent\docs/extracted_text.txt", 
 #with open ("..\..\docs/extracted_text.txt", 
 
-def summarize_paper():
+def analyze_limitations():
 
     with open ("docs/extracted_text.txt", 
                         "r",
@@ -47,17 +46,22 @@ def summarize_paper():
     3. Main Contributions
     """
 
-#def summarize_paper(paper_text):
+#def analyze_limitations(paper_text):
 
     prompt = f"""
-    You are an expert AI research assistant.
+    You are an expert AI research reviewer.
 
-    Analyze the following research paper and provide:
+    Analyze the following research paper.
+    
+    Identify:
 
-    1. Executive Summary (5 bullet points)
-    2. Main Idea
-    3. Why this paper was important
-    4. Key Contributions
+    1. Technical limitations
+    2. Assumptions made
+    3. Risks or weaknesses
+    4. Future research directions
+    
+    Do NOT summarize the paper.
+    Do NOT discuss contributions.
     
     Paper:
 
@@ -98,7 +102,7 @@ def summarize_paper():
                  
      # ------- API wrap end -------
      
-    #print(response.text)   now summary is printed in function call. name==main
+    # print(response.text)  now response in printed in calling function name==main
 
     ##step 5: make summary agent callable function
     """  
@@ -139,13 +143,13 @@ def summarize_paper():
     output_path = os.path.join(
           BASE_DIR,
           "docs",
-          "summary_report.txt"
+          "limitations_report.txt"
      )
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(response.text)
           
-    print(f"Summary saved to: {output_path}")
+    print(f"Limitations Summary saved to: {output_path}")
     
     
     
@@ -153,5 +157,6 @@ def summarize_paper():
     
 if __name__ == "__main__":
 #    pdf_text = paper_text
-    print(summarize_paper())
-    
+#    print(analyze_limitations(paper_text))
+    print(analyze_limitations())
+
