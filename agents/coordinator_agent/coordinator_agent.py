@@ -15,15 +15,33 @@ def choose_agent(user_query):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=f"""
-        You are a router .
+        You are the coordinator of an AI Research Assistant.
         
-        Choose exactly one:
+        Choose exactly ONE of these:
         
         TOOL
         RESEARCH
         SUMMARY
         CONTRIBUTIONS
         LIMITATIONS
+        ANALYZE
+        
+        Rules:
+        - Mathematical calculations -> TOOL
+        - General knowledge or research questions -> RESEARCH
+        - Requests to summarize a paper -> SUMMARY
+        - Requests asking for contributions -> CONTRIBUTIONS
+        - Requests asking for limitations or weaknesses -> LIMITATIONS
+        - Requests like:
+            Analyze this paper
+            Review this paper
+            Give a complete report
+            Complete analysis
+            Evaluate this paper
+          -> ANALYZE
+          
+        Return ONLY one word.
+        
         
         Question: {user_query}
         
@@ -83,6 +101,43 @@ elif agent_choice == "CONTRIBUTIONS":
 elif agent_choice == "LIMITATIONS":
     result = analyze_limitations()
     
+elif agent_choice == "ANALYZE":
+    print("Running Summary Agent....")
+    summary = summarize_paper()
+    
+    print("Running Contribution Agent...")
+    contributions = extract_contributions()
+    
+    print("Running Limitation Agent...")
+    limitations = analyze_limitations()
+    
+    result = f"""
+    =============================================================
+             AI RESEARCH ANALYSIS REPORT
+    =============================================================
+    
+    📜 SUMMARY
+    -------------------------------------------------------------
+    
+    {summary}
+    
+    
+    💡 KEY CONTRIBUTIONS
+    -------------------------------------------------------------
+    
+    {contributions}
+    
+    
+    ⚠️ LIMITATIONS
+    -------------------------------------------------------------
+    
+    {limitations}
+    
+    
+    =============================================================
+    Analysis completed successfully.
+    =============================================================
+    """
     
 else:
     result = "No suitable agent found."
