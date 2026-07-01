@@ -108,7 +108,7 @@ Features include
 - Download Report
 - Expandable Analysis Sections
 
-*(Screenshots will be added here.)*
+*(See Screenshots below for a complete UI walkthrough.)*
 
 ---
 
@@ -184,38 +184,55 @@ python -m streamlit run app.py
 ---
 
 # 📸 Screenshots
+---
 
 ### Home Dashboard
 ![Home](assets/01_home_dashboard.png)
 *Home - dashboard.*
 
+---
+
 ### Upload section
 ![Upload](assets/02_upload_paper.png)
 *Upload area.*
+
+---
 
 ### Analysis running
 ![Analysis running](assets/03_analysis_running.png)
 *Analysis running.*
 
+---
+
 ### Executive Summary
 ![Summary](assets/04_executive_summary.png)
 *AI-generated executive summary of the uploaded research paper.*
+
+---
 
 ### Key Contributions
 ![Contribution](assets/05_key_contributions.png)
 *Key contributions of the research paper.*
 
+---
+
 ### Limitations
 ![Limitations](assets/06_limitations_future_work.png)
 *Limitations of the research paper.*
+
+---
 
 ### Download Report
 ![Download](assets/07_download_report.png)
 *Download your final analysis.*
 
+---
+
 ### Paper Statistics
 ![Statistics](assets/08_paper_statistics.png)
 *Paper Statistics.*
+
+---
 
 ### Sidebar & Upcoming Features
 ![Future](assets/09_sidebar_future_features.png)
@@ -226,7 +243,7 @@ python -m streamlit run app.py
 
 # 🎥 Demo Video
 
-*(YouTube link will be added after recording.)*
+*(Demo video will be published soon.)*
 
 ---
 
@@ -277,4 +294,4 @@ Please consider giving it a ⭐ on GitHub!
 
 ## Status
 
-🚧 In Development
+✅ Stable MVP. Version 1.0 Released.
