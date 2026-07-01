@@ -16,10 +16,12 @@ from google import genai
 from dotenv import load_dotenv
 #import os
 
+#the below path is printing inside agents section but not in docs folder of root directory hence use only BASE_DIR 
+"""
 project_root = os.path.dirname(
      os.path.dirname(os.path.abspath(__file__))
 )
-
+"""
 # Load API key
 load_dotenv()
 
@@ -29,12 +31,14 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 #with open ("C:\Users\Shridhar_Shukla_AI\OneDrive\Documents\2026\5-Day AI Agents-google\Capstone project\AI-Research-Assistant-Agent\docs/extracted_text.txt", 
 #with open ("..\..\docs/extracted_text.txt", 
 
-def extract_contributions():
-
-    with open ("docs/extracted_text.txt", 
-                        "r",
-                        encoding="utf-8") as f:
-       paper_text = f.read()
+def extract_contributions(paper_text=None):
+    
+    if paper_text is None:
+        
+        with open ("docs/extracted_text.txt", 
+                            "r",
+                            encoding="utf-8") as f:
+           paper_text = f.read()
                    
 
     """ #You are a research paper analyst.
@@ -139,7 +143,7 @@ def extract_contributions():
      )
     """
 
-    docs_folder = os.path.join(project_root, "docs")
+    docs_folder = os.path.join(BASE_DIR, "docs")
 
     os.makedirs(docs_folder, exist_ok=True)
 

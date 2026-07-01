@@ -30,12 +30,14 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 #with open ("C:\Users\Shridhar_Shukla_AI\OneDrive\Documents\2026\5-Day AI Agents-google\Capstone project\AI-Research-Assistant-Agent\docs/extracted_text.txt", 
 #with open ("..\..\docs/extracted_text.txt", 
 
-def analyze_limitations():
-
-    with open ("docs/extracted_text.txt", 
-                        "r",
-                        encoding="utf-8") as f:
-       paper_text = f.read()
+def analyze_limitations(paper_text=None):
+    
+    if paper_text is None:
+        
+        with open ("docs/extracted_text.txt", 
+                            "r",
+                            encoding="utf-8") as f:
+           paper_text = f.read()
                    
 
     """ #You are a research paper analyst.
