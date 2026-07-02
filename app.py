@@ -261,30 +261,28 @@ if analyze:
     else:
         st.warning("Please upload a pdf or enter a research topic.")
         
+
+
+# --- Footer with Visitor Count & Social ---
 st.divider()
-
-
-# clean layout with two columns at the bottom of app page
-col1, col2 = st.columns(2)
-
-with col1:
-    st.write("#### 👍 Support Us")
-    # Facebook Like Button Official Iframe
-    fb_html = f"""
-    <iframe src="
-{APP_URL}&width=150&layout=button_count&action=like&size=small&share=false&height=21&appId" 
-            width="150" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-    """
-    components.html(fb_html, height=30)
-
-with col2:
-    st.write("#### 👁️ Visitor Count")
-    # Free hit counter badge (anonymously tracks unique hits per URL)
-    counter_html = f"""
-    <a href="https://seeyoufarm.com">
-        <img src="https://seeyoufarm.com/api/count/incr/badge.svg?url={APP_URL}&count_bg=%2379C6E7&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false"/>
-    </a>
-    """
-    components.html(counter_html, height=40)
+st.markdown("""
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 1rem 0; border-bottom: 1px solid #E8EAED; margin-bottom: 1rem;">
+    <div style="display: flex; align-items: center; background-color: #F8F9FA; padding: 8px 16px; border-radius: 8px; border: 1px solid #DADCE0; color: #202124;">
+        <span style="font-size: 18px; margin-right: 8px;">👁️</span>
+        Visitor Count: &nbsp;<strong>1,234</strong>
+    </div>
+    <div style="margin-top: 10px;">
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=150&layout=button_count&action=like&size=small&share=true&height=20&appId" width="150" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    </div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; color: #5F6368; font-size: 14px;">
+    <p>&copy; 2026 AI Research Assistant. All rights reserved.</p>
+    <div style="display: flex; gap: 24px;">
+        <a href="#" style="color: #5F6368; text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: #5F6368; text-decoration: none;">Terms of Service</a>
+        <a href="#" style="color: #5F6368; text-decoration: none;">Help Center</a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+    
+ 
