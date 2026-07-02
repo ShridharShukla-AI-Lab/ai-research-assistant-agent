@@ -234,7 +234,7 @@ if analyze:
         #sidebar
         with st.sidebar:
             st.title("Settings")
-            st.write("AI model")
+            """st.write("AI model")
             
             model = st.selectbox(
                 "Choose Model",
@@ -242,7 +242,7 @@ if analyze:
                      "gemini-2.5-flash",
                      "gemini-2.5-pro"
                 ]
-            )
+            )"""
             st.divider()
             st.subheader("🚀 Upcoming Features")
             st.write("👥💬 Chat with Paper")
@@ -269,10 +269,10 @@ st.markdown("""
 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 1rem 0; border-bottom: 1px solid #E8EAED; margin-bottom: 1rem;">
     <div style="display: flex; align-items: center; background-color: #F8F9FA; padding: 8px 16px; border-radius: 8px; border: 1px solid #DADCE0; color: #202124;">
         <span style="font-size: 18px; margin-right: 8px;">👁️</span>
-        Visitor Count: &nbsp;<strong>1,234</strong>
+        <img src="https://api.visitorbadge.io/api/visitors?path=shridhar-shukla-ai-dashboard&label=LIVE%20VISITORS&labelColor=%23ffffff&countColor=%231A73E8" alt="Live Visitor Count" style="height: 22px;">
     </div>
     <div style="margin-top: 10px;">
-        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=150&layout=button_count&action=like&size=small&share=true&height=20&appId" width="150" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61591182107658&width=150&layout=button_count&action=like&size=small&share=true&height=46" width="150" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
 <div style="display: flex; justify-content: space-between; align-items: center; color: #5F6368; font-size: 14px;">
@@ -284,5 +284,3 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
-    
- 
