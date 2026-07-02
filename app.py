@@ -2,6 +2,7 @@
 import os
 import streamlit as st
 import base64
+import streamlit.components.v1 as components
 from PIL import Image
 from agents.coordinator_agent.coordinator_agent import run_coordinator
 
@@ -71,6 +72,9 @@ st.markdown("""
 
     
 # -------------------------------------------
+# Define app identifier for tracking
+APP_URL = "https://shridhar-ai-research-assist.streamlit.app/"
+
 
 
 st.set_page_config(
@@ -257,4 +261,30 @@ if analyze:
     else:
         st.warning("Please upload a pdf or enter a research topic.")
         
-#st.divider()
+st.divider()
+
+
+# clean layout with two columns at the bottom of app page
+col1, col2 = st.columns(2)
+
+with col1:
+    st.write("#### 👍 Support Us")
+    # Facebook Like Button Official Iframe
+    fb_html = f"""
+    <iframe src="
+{APP_URL}&width=150&layout=button_count&action=like&size=small&share=false&height=21&appId" 
+            width="150" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+    """
+    components.html(fb_html, height=30)
+
+with col2:
+    st.write("#### 👁️ Visitor Count")
+    # Free hit counter badge (anonymously tracks unique hits per URL)
+    counter_html = f"""
+    <a href="https://seeyoufarm.com">
+        <img src="https://seeyoufarm.com/api/count/incr/badge.svg?url={APP_URL}&count_bg=%2379C6E7&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false"/>
+    </a>
+    """
+    components.html(counter_html, height=40)
